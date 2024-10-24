@@ -1,0 +1,49 @@
+locale|en
+
+SYSTEM_RADAR_DOPPLER|DSR-100 Doppler Sweeping RADAR
+
+SYSTEM_RADAR_DOPPLER_DESC|A standard all-purpose radar that balances range, resolution, and sweep frequency, this model offers reliable Doppler-shift detection. While it lacks the advanced features of specialized radar systems, it provides a dependable solution for general navigation and threat detection.
+
+SYSTEM_RADAR_DOPPLER_SPECS|Manufacturer: Conlido RVM \nScanning beam: low-frequency radio \nSweep period: 500 ms \nSweep coverage: 360 deg \nMeasurements: distance, relative velocity
+
+SYSTEM_RADAR_DOPPLER_MANUAL|Scans the surroundings of your ship. \nPierces ice and rock formations, providing vague ice readouts. \nPresents relative velocity of detected objects with color shifts. \nDetects only ships and metallic ore nuggets.
+
+
+
+SYSTEM_RADAR_CONE|BF-220 Beamformed RADAR
+
+SYSTEM_RADAR_CONE_DESC|This cutting-edge beamformed radar system concentrates its low-frequency radio waves into a narrow beam, enhancing detection precision and speed for forward-facing scans. Primarily used in exploration and navigation, it excels at detecting hidden structures or potential threats ahead. However, its limited field of view makes it unsuitable for all-around monitoring.
+
+SYSTEM_RADAR_CONE_SPECS|Manufacturer: Minding LF \nScanning beam: low-frequency radio \nSweep period: 500 ms \nSweep coverage: 30 deg \nMeasurements: distance
+
+SYSTEM_RADAR_CONE_MANUAL|Scans the surroundings of your ship. \nPierces ice and rock formations, providing vague ice readouts. \nDetects objects in a narrow cone. \nDetects only ships and metallic ore nuggets.
+
+
+
+SYSTEM_RADAR_OPA|PR-500 Phased RADAR Array
+
+SYSTEM_RADAR_OPA_DESC|An advanced phased array radar system that can electronically steer its beam in any direction, eliminating the need for moving parts. The PR-500 offers near-instantaneous area scanning and excellent accuracy in tracking moving objects, though it struggles with detecting small, fast-moving targets at extreme ranges.
+
+SYSTEM_RADAR_OPA_SPECS|Manufacturer: Coherent Light \nScanning beam: medium-frequency radio \nSweep period: continuous \nSweep coverage: 360 deg \nMeasurements: distance
+
+SYSTEM_RADAR_OPA_MANUAL|Scans the surroundings of your ship. \nPierces ice and rock formations, providing vague ice readouts. \nDetects only ships and metallic ore nuggets. \nHigh resolution. \nVery high scanning speed. \nAffected by ghosting artifacts. 
+
+
+
+SYSTEM_RADAR_OPA_DOPPLER|PR-500D Doppler Phased RADAR
+
+SYSTEM_RADAR_OPA_DOPPLER_DESC|Building upon the PR-500, this upgraded phased array radar incorporates Doppler-shift detection to provide superior tracking of object velocities. This enhancement significantly improves its threat detection capabilities, though the system remains sensitive to interference and minor ghosting artifacts.
+
+SYSTEM_RADAR_OPA_DOPPLER_SPECS|Manufacturer: Coherent Light \nScanning beam: medium-frequency radio \nSweep period: continuous \nSweep coverage: 360 deg \nMeasurements: distance, relative velocity
+
+SYSTEM_RADAR_OPA_DOPPLER_MANUAL|Scans the surroundings of your ship. \nPierces ice and rock formations, providing vague ice readouts. \nPresents relative velocity of detected objects with color shifts. \nDetects only ships and metallic ore nuggets. \nHigh resolution. \nVery high scanning speed. \nAffected by ghosting artifacts.
+
+
+
+SYSTEM_RADAR_HYBRID|RLS-900 Hybrid RADAR-LIDAR System
+
+SYSTEM_RADAR_HYBRID_DESC|A cutting-edge hybrid system that combines high-resolution LIDAR with medium-frequency radar for exceptional performance in both short and long-range detection. The RLS-900 uses LIDAR for precise close-range scans and radar for broader area coverage, making it ideal for scientific missions and exploration. The system provides detailed measurements of distance and object shapes but lacks velocity tracking, limiting its ability to assess moving targets in real-time.
+
+SYSTEM_RADAR_HYBRID_SPECS|Manufacturer: Runasimi \n Scanning beam: infrared light, medium-frequency radio \nSweep period: 2000 ms \nSweep coverage: 360 deg \nMeasurements: distance
+
+SYSTEM_RADAR_HYBRID_MANUAL|Scans the surroundings of your ship. \nDetects all visible objects. \Pierces ice and rock formations. \nHigh resolution. \nSlow scanning speed.
