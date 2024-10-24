@@ -6,7 +6,7 @@ extends Node
 # Mods are loaded from lowest to highest priority, default is 0
 const MOD_PRIORITY = 0
 # Name of the mod, used for writing to the logs
-const MOD_NAME = "RADARs!"
+const MOD_NAME = "Moar RADARs!"
 # Path of the mod folder, automatically generated on runtime
 var modPath:String = get_script().resource_path.get_base_dir() + "/"
 # Required var for the replaceScene() func to work
