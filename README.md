@@ -6,4 +6,4 @@
 - RLS-900 Hybrid RADAR-LIDAR System
 
 # Compatiblity Note:
-**`Moar RADARs` mod supports ANY other mod that doesn't modify ``func connectToShip():`` in LIDAR.gd**
+**Moar RADARs** mod supports ANY other mod that doesn't modify ``func connectToShip`` and ``func onSetup`` in `LIDAR.gd`
