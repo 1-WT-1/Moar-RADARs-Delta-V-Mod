@@ -1,0 +1,14 @@
+[package]
+
+id="wt.MoarRadars"
+name="MoarRadars
+version="1.1.0"
+version_major=1
+version_minor=1
+version_bugfix=0
+version_metadata=""
+description="MOARRADARS_MOD_DESCRIPTION"
+group="equipment"
+github_homepage="https://github.com/1-WT-1/Moar-RADARs-Delta-V-Mod"
+github_releases="https://github.com/1-WT-1/Moar-RADARs-Delta-V-Mod/releases"
+discord_thread="https://discord.com/channels/426287934870781952/1299032663037968455"

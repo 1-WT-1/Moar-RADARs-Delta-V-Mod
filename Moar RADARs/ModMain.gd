@@ -26,9 +26,10 @@ func _init(modLoader = ModLoader):
 	
 	# extends LIDAR.gd to tell the game that new RADARs exist and what settings to use.
 	installScriptExtension("hud/LIDAR.gd")
-	
+	replaceScene("hud/components/LIDAR.tscn")
 	# replaces Upgrades.tscn to add new RADARs to the lidar slot in the equipment screen.
 	replaceScene("enceladus/Upgrades.tscn")
+	replaceScene("enceladus/Tuning.tscn")
 	
 	l("Initialized")
 
@@ -38,7 +39,6 @@ func _init(modLoader = ModLoader):
 func _ready():
 	l("Readying")
 
-	
 	l("Ready")
 
 

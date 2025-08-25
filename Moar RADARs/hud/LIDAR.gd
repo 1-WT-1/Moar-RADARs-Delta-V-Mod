@@ -1,6 +1,7 @@
 extends "res://hud/LIDAR.gd"
 
 func connectToShip():
+#	.connectToShip()
 	ship = reader.getShip()
 	if Tool.claim(ship):
 		type = ship.getLidarType()

@@ -1,5 +1,7 @@
 locale|en
 
+MOARRADARS_MOD_DESCRIPTION|Mod that introduces new RADARs
+
 SYSTEM_RADAR_DOPPLER|DSR-100 Doppler Sweeping RADAR
 
 SYSTEM_RADAR_DOPPLER_DESC|A standard all-purpose radar that balances range, resolution, and sweep frequency, this model offers reliable Doppler-shift detection. While it lacks the advanced features of specialized radar systems, it provides a dependable solution for general navigation and threat detection.
