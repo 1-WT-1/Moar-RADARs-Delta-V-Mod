@@ -7,8 +7,8 @@ const MOD_PRIORITY = 0
 const MOD_NAME = "Moar RADARs!"
 const MOD_VERSION_MAJOR = 2
 const MOD_VERSION_MINOR = 0
-const MOD_VERSION_BUGFIX = 0
-const MOD_VERSION_METADATA = "indev"
+const MOD_VERSION_BUGFIX = 1
+const MOD_VERSION_METADATA = ""
 # Path of the mod folder, automatically generated on runtime
 var modPath:String = get_script().resource_path.get_base_dir() + "/"
 # Required var for the replaceScene() func to work
@@ -21,6 +21,7 @@ func _init(modLoader = ModLoader):
 	
 	installScriptExtension("hud/LIDAR.gd")
 	replaceScene("hud/components/LIDAR.tscn")
+	replaceScene("enceladus/Upgrades.tscn")
 	replaceScene("enceladus/Tuning.tscn")
 	l("Initialized")
 
