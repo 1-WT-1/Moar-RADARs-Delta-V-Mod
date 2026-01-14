@@ -33,6 +33,10 @@ func connectToShip():
 				doppler = false
 				steps = 1440
 				beams = [{"mask":lidarRadarMask, "error":0, "response":1}, {"mask":lidarLightMask, "error":100.0, "response":0.2}]
+			"SYSTEM_LIDAR_RADAR_CONE":
+				coneSweep = true
+				steps = 1440
+				beams = [{"mask": lidarRadarMask, "error": 0, "response": 1}, {"mask": lidarLightMask, "error": 30.0, "response": 0.2}]
 			"SYSTEM_LIDAR_DOPPLER_CONE":
 				steps = 720
 				coneSweep = true

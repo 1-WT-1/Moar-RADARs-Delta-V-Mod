@@ -1,61 +1,52 @@
 extends Node
 
-#ModMain Template provided by Za'krin
-
 # Set mod priority if you want it to load before/after other mods
 # Mods are loaded from lowest to highest priority, default is 0
 const MOD_PRIORITY = 0
 # Name of the mod, used for writing to the logs
 const MOD_NAME = "Moar RADARs!"
+const MOD_VERSION_MAJOR = 2
+const MOD_VERSION_MINOR = 0
+const MOD_VERSION_BUGFIX = 0
+const MOD_VERSION_METADATA = "indev"
 # Path of the mod folder, automatically generated on runtime
 var modPath:String = get_script().resource_path.get_base_dir() + "/"
 # Required var for the replaceScene() func to work
 var _savedObjects := []
 
-
-# Initialize the mod
-# This function is executed before the majority of the game is loaded
-# Only the Tool and Debug AutoLoads are available
-# Script and scene replacements should be done here, before the originals are loaded
 func _init(modLoader = ModLoader):
 	l("Initializing")
-
-	# loads translation files that contain translations for different languages, but also tells the game the Display Name, Description, Specs, and User Manual entries.
 	updateTL("i18n/en.txt", "|")
 	updateTL("i18n/ua.txt", "|")
 	
-	# extends LIDAR.gd to tell the game that new RADARs exist and what settings to use.
 	installScriptExtension("hud/LIDAR.gd")
 	replaceScene("hud/components/LIDAR.tscn")
-	# replaces Upgrades.tscn to add new RADARs to the lidar slot in the equipment screen.
-	replaceScene("enceladus/Upgrades.tscn")
 	replaceScene("enceladus/Tuning.tscn")
-	
 	l("Initialized")
 
-
-# Do stuff on ready
-# At this point all AutoLoads are available and the game is loaded
 func _ready():
 	l("Readying")
 
 	l("Ready")
 
-
-# Helper script to load translations using csv format
-# `path` is the path to the transalation file
-# `delim` is the symbol used to seperate the values
-# example usage: updateTL("i18n/translation.txt", "|")
-func updateTL(path:String, delim:String = ","):
-	path = str(modPath + path)
+# Helper script to load translations using csv format (updated by Hev)
+func updateTL(path:String, delim:String = ",", useRelativePath:bool = true, fullLogging:bool = true):
+	if useRelativePath:
+		path = str(modPath + path)
 	l("Adding translations from: %s" % path)
 	var tlFile:File = File.new()
-	tlFile.open(path, File.READ)
+	var err = tlFile.open(path, File.READ)
+
+	if err != OK:
+		return
 
 	var translations := []
 
+	var translationCount = 0
 	var csvLine := tlFile.get_line().split(delim)
-	l("Adding translations as: %s" % csvLine)
+
+	if fullLogging:
+		l("Adding translations as: %s" % csvLine)
 	for i in range(1, csvLine.size()):
 		var translationObject := Translation.new()
 		translationObject.locale = csvLine[i]
@@ -63,19 +54,29 @@ func updateTL(path:String, delim:String = ","):
 
 	while not tlFile.eof_reached():
 		csvLine = tlFile.get_csv_line(delim)
-
-		if csvLine.size() > 1:
+		var size = csvLine.size()
+		if size > 1:
+			if size > 2:
+				var i = 0
+				while i < size:
+					if csvLine[i].ends_with("\\") and i < size:
+						csvLine[i] = csvLine[i] + delim + csvLine[i + 1]
+						csvLine.remove(i + 1)
+						size -= 1
+					i += 1
 			var translationID := csvLine[0]
-			for i in range(1, csvLine.size()):
+			for i in range(1, size):
 				translations[i - 1].add_message(translationID, csvLine[i].c_unescape())
-			l("Added translation: %s" % csvLine)
+			if fullLogging:
+				l("Added translation: %s" % csvLine)
+			translationCount += 1
 
 	tlFile.close()
 
 	for translationObject in translations:
 		TranslationServer.add_translation(translationObject)
+	l("%s Translations Updated" % translationCount)
 
-	l("Translations Updated")
 
 
 # Helper function to extend scripts
@@ -93,7 +94,6 @@ func installScriptExtension(path:String):
 
 	childScript.take_over_path(parentPath)
 
-
 # Helper function to replace scenes
 # Can either be passed a single path, or two paths
 # With a single path, it will replace the vanilla scene in the same relative position
@@ -110,16 +110,7 @@ func replaceScene(newPath:String, oldPath:String = ""):
 	_savedObjects.append(scene)
 	l("Finished updating: %s" % oldPath)
 
-
-# Instances Settings.gd, loads DLC, then frees the script.
-func loadDLC():
-	l("Preloading DLC as workaround")
-	var DLCLoader:Settings = preload("res://Settings.gd").new()
-	DLCLoader.loadDLC()
-	DLCLoader.queue_free()
-	l("Finished loading DLC")
-
-
-# Func to print messages to the logs
-func l(msg:String, title:String = MOD_NAME):
-	Debug.l("[%s]: %s" % [title, msg])
+func l(msg:String, title:String = MOD_NAME, version:String = str(MOD_VERSION_MAJOR) + "." + str(MOD_VERSION_MINOR) + "." + str(MOD_VERSION_BUGFIX)):
+	if not MOD_VERSION_METADATA == "":
+		version = version + "-" + MOD_VERSION_METADATA
+	Debug.l("[%s V%s]: %s" % [title, version, msg])
